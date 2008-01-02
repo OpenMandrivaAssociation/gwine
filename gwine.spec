@@ -10,6 +10,7 @@ Source0:	http://download.gna.org/gwine/%{name}-%{version}.tar.bz2
 License:	GPL
 Group:		Databases
 Url:		http://home.gna.org/gwine/index
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildArch:	noarch
 BuildRequires:	ImageMagick
 BuildRequires:	scrollkeeper desktop-file-utils 
