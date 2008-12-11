@@ -12,7 +12,7 @@ Group:		Databases
 Url:		http://home.gna.org/gwine/index
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildArch:	noarch
-BuildRequires:	ImageMagick
+BuildRequires:	imagemagick
 BuildRequires:	scrollkeeper desktop-file-utils 
 BuildRequires:	perl-Gtk2-GladeXML perl-Gnome2-GConf perl-Gnome2 perl-Locale-gettext
 Requires:	perl-Gtk2-GladeXML perl-Gnome2-GConf perl-Gnome2 perl-Locale-gettext
