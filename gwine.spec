@@ -1,13 +1,13 @@
 %define name gwine
 %define version 0.10.3
-%define release %mkrel 5
+%define release %mkrel 6
 
 Summary:	A Gnome application to manage your wine cellar
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
 Source0:	http://download.gna.org/gwine/%{name}-%{version}.tar.bz2
-License:	GPL
+License:	GPLv2+
 Group:		Databases
 Url:		http://home.gna.org/gwine/index
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -35,35 +35,31 @@ Gwine is a Gnome application to manage your wine cellar.
 make test
 
 %install
-rm -rf $RPM_BUILD_ROOT
-make install DESTDIR=$RPM_BUILD_ROOT PREFIX=%{_prefix} XDG_DATA_DIRS=$RPM_BUILD_ROOT%{_datadir}
+rm -rf %{buildroot}
+make install DESTDIR=%{buildroot} PREFIX=%{_prefix} XDG_DATA_DIRS=%{buildroot}%{_datadir}
 
 perl -pi -e 's,%{name}.png,%{name},g' %{buildroot}%{_datadir}/applications/*
 
-rm -f $RPM_BUILD_ROOT%{_datadir}/applications/mimeinfo.cache
+rm -f %{buildroot}%{_datadir}/applications/mimeinfo.cache
 
 desktop-file-install --vendor="" \
   --remove-category="Application" \
   --remove-category="Accessories" \
   --add-category="Database;Office" \
-  --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
+  --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
 
-mkdir -p $RPM_BUILD_ROOT%{_liconsdir} $RPM_BUILD_ROOT%{_iconsdir} $RPM_BUILD_ROOT%{_miconsdir}
-convert -geometry 48x48 pixmaps/%{name}.png $RPM_BUILD_ROOT%{_liconsdir}/%{name}.png
-convert -geometry 32x32 pixmaps/%{name}.png $RPM_BUILD_ROOT%{_iconsdir}/%{name}.png
-convert -geometry 16x16 pixmaps/%{name}.png $RPM_BUILD_ROOT%{_miconsdir}/%{name}.png
+mkdir -p %{buildroot}%{_liconsdir} %{buildroot}%{_iconsdir} %{buildroot}%{_miconsdir}
+convert -geometry 48x48 pixmaps/%{name}.png %{buildroot}%{_liconsdir}/%{name}.png
+convert -geometry 32x32 pixmaps/%{name}.png %{buildroot}%{_iconsdir}/%{name}.png
+convert -geometry 16x16 pixmaps/%{name}.png %{buildroot}%{_miconsdir}/%{name}.png
 
 %find_lang %name
 
-rm -rf $RPM_BUILD_ROOT%{_localestatedir}/lib/scrollkeeper
-rm -rf $RPM_BUILD_ROOT%{_datadir}/mime
-
-#manually move omf files, they've a strange default location
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/omf/%{name}
-mv $RPM_BUILD_ROOT/gwine/* $RPM_BUILD_ROOT%{_datadir}/omf/%{name}/
+rm -rf %{buildroot}%{_localestatedir}/lib/scrollkeeper
+rm -rf %{buildroot}%{_datadir}/mime
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %if %mdkversion < 200900
 %post
