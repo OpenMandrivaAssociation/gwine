@@ -1,6 +1,6 @@
 %define name gwine
 %define version 0.10.3
-%define release 9
+%define release 10
 
 Summary:	A Gnome application to manage your wine cellar
 Name:		%{name}
