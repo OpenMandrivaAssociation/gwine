@@ -9,7 +9,7 @@ Release:	%{release}
 Source0:	http://download.gna.org/gwine/%{name}-%{version}.tar.bz2
 License:	GPLv2+
 Group:		Databases
-Url:		http://home.gna.org/gwine/index
+Url:		https://home.gna.org/gwine/index
 BuildArch:	noarch
 BuildRequires:	imagemagick
 BuildRequires:	scrollkeeper desktop-file-utils 
