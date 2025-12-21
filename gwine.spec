@@ -11,6 +11,7 @@ License:	GPLv2+
 Group:		Databases
 Url:		https://home.gna.org/gwine/index
 BuildArch:	noarch
+BuildRequires:	make
 BuildRequires:	imagemagick
 BuildRequires:	scrollkeeper desktop-file-utils 
 BuildRequires:	perl-Gtk2-GladeXML perl-Gnome2-GConf perl-Gnome2 perl-Locale-gettext
